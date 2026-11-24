@@ -10,7 +10,7 @@ Protótipo acadêmico desenvolvido exclusivamente com HTML5, CSS3 e JavaScript p
 
 ## Hospedagem na Discloud
 
-Cadastre ou selecione o subdomínio `conectaeletron` no painel da Discloud e envie `conectaeletron-discloud.zip` pelo painel de aplicações. Quando o subdomínio estiver ativo, o endereço será `https://conectaeletron.discloud.app`. A Discloud exige plano Platinum ou superior e pelo menos 512 MB de RAM para sites.
+Selecione o subdomínio `conecaeletron` no painel da Discloud e importe a branch `main` pelo GitHub ou envie `conectaeletron-discloud.zip`. Quando o subdomínio estiver ativo, o endereço será `https://conecaeletron.discloud.app`. A Discloud exige plano Platinum ou superior e pelo menos 512 MB de RAM para sites.
 
 Para gerar novamente o pacote após alterações, execute na raiz do projeto:
 
