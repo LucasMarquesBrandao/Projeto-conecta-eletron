@@ -8,6 +8,16 @@ Protótipo acadêmico desenvolvido exclusivamente com HTML5, CSS3 e JavaScript p
    `python -m http.server 5500`
 3. Acesse http://localhost:5500
 
+## Hospedagem na Discloud
+
+Cadastre ou selecione o subdomínio `conectaeletron` no painel da Discloud e envie `conectaeletron-discloud.zip` pelo painel de aplicações. Quando o subdomínio estiver ativo, o endereço será `https://conectaeletron.discloud.app`. A Discloud exige plano Platinum ou superior e pelo menos 512 MB de RAM para sites.
+
+Para gerar novamente o pacote após alterações, execute na raiz do projeto:
+
+```powershell
+python -m zipfile -c conectaeletron-discloud.zip discloud.config index.html css js materials
+```
+
 ## Contas de demonstração
 - Administrador: admin@conectaeletron.com / admin123
 - Professor: professor@conectaeletron.com / prof123
