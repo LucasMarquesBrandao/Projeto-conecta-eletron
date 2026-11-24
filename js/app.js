@@ -59,6 +59,25 @@
     const app = document.getElementById("app"); app.className = ""; app.innerHTML = `<div class="app-shell"><header class="topbar"><div class="brand-inline"><span class="brand-symbol">CE</span><span>Conecta Elétron</span></div><nav class="main-nav" aria-label="Menu principal">${destinations[user.role].map(([label, id]) => `<button type="button" data-destination="${id}">${label}</button>`).join("")}</nav><div class="topbar-right">${avatar(user)}<span class="user-label">${esc(user.name)} · ${labels[user.role]}</span><button class="logout" id="my-account" type="button">Minha conta</button><button class="logout" id="logout" type="button">Sair</button></div></header><main class="dashboard">${content}</main></div>`; root = null;
     $("#logout").onclick = logout;
     $("#my-account").onclick = renderAccount;
+    document.querySelectorAll(".table-wrap > table:not(.student-performance-table)").forEach(table => {
+      table.classList.add("responsive-records");
+      table.setAttribute("role", "table");
+      for (const section of [table.tHead, ...table.tBodies]) {
+        section.setAttribute("role", "rowgroup");
+        for (const row of section.rows) {
+          row.setAttribute("role", "row");
+          for (const [index, cell] of Array.from(row.cells).entries()) {
+            cell.setAttribute("role", cell.tagName === "TH" ? "columnheader" : "cell");
+            if (cell.tagName === "TH" || cell.colSpan > 1) continue;
+            const label = document.createElement("span");
+            label.className = "record-label";
+            label.setAttribute("aria-hidden", "true");
+            label.textContent = table.tHead.rows[0].cells[index].textContent;
+            cell.prepend(label);
+          }
+        }
+      }
+    });
     document.querySelectorAll("[data-destination]").forEach(button => button.onclick = () => {
       const id = button.dataset.destination;
       if (!document.getElementById(id)) renderDashboard();
@@ -68,6 +87,7 @@
       }
       const target = document.getElementById(id);
       target.setAttribute("tabindex", "-1");
+      target.style.scrollMarginTop = ($(".topbar").offsetHeight + 16) + "px";
       target.focus({ preventScroll: true });
       target.scrollIntoView({ block: "start" });
     });
@@ -355,6 +375,7 @@
     const objective = q.type === "objective";
     dialog.innerHTML = `
       <form>
+        <div class="question-dialog-body">
         <h2 id="question-editor-title">Editar questão</h2>
         <p>${esc(q.area)} · ${objective ? "Objetiva" : "Dissertativa"}</p>
         <div class="field"><label for="edit-prompt">Enunciado</label><textarea id="edit-prompt" name="prompt" rows="4" required autofocus>${esc(q.prompt)}</textarea></div>
@@ -370,6 +391,7 @@
         </div>
         ${documentField("edit", q.materialDocument)}
         <div class="error" id="question-editor-error" role="alert"></div>
+        </div>
         <div class="profile-dialog-actions">
           <button class="btn btn-outline" id="cancel-question-edit" type="button">Cancelar</button>
           <button class="btn profile-dialog-confirm" type="submit">Salvar alterações</button>

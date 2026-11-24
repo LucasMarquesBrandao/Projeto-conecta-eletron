@@ -86,5 +86,7 @@ A suíte de armazenamento verifica inicialização, cadastro, atualização e re
 Consulte a [entrega técnica](ENTREGA-TRANSFERENCIA.md) para a estrutura do projeto e as orientações de transferência.
 
 - [Análise de aderência ao escopo](ANALISE-DE-ADERENCIA.md)
+- [Manual do sistema com telas de computador e celular](MANUAL-DO-SISTEMA.md)
+- [Diagrama de classes UML](DIAGRAMA-DE-CLASSES.md)
 - [Roteiro de testes manuais](TESTES-MANUAIS.md)
 - [Registro de continuidade](CONTINUIDADE.md)

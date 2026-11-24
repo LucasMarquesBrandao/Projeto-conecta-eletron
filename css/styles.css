@@ -123,6 +123,12 @@
   letter-spacing: normal;
   text-transform: none;
 }
+.record-label { display: none; }
+.field { min-width: 0; }
+.field :is(input, select, textarea) { min-width: 0; max-width: 100%; }
+.review-card blockquote { overflow-wrap: anywhere; }
+.topbar-right .user-label { overflow-wrap: anywhere; }
+.profile-dialog { max-height: calc(100dvh - 32px); }
 .field :is(#question-document, #edit-document) {
   height: auto;
   min-height: 48px;
@@ -252,9 +258,26 @@ select[data-user-role]:focus-visible {
 
 @media(max-width:850px){
   .main-nav{order:3;flex-basis:100%}
-  .dashboard [tabindex="-1"]{scroll-margin-top:175px}
 }
 
 @media(max-width:520px){
-  .main-nav button{font-size:13px;padding:8px}
+  .topbar{gap:6px 12px}
+  .topbar-right{gap:6px}
+  .topbar .logout,.main-nav button{min-height:38px;padding:7px 8px;font-size:12px}
+  .main-nav{column-gap:4px;row-gap:0}
+  .welcome > :is(.btn,.role-actions){margin-top:12px}
+  .student-performance-table{table-layout:fixed}
+  .student-performance-table :is(th,td){padding:9px 4px;overflow-wrap:anywhere}
+  .student-performance-table th:first-child{width:34%}
+  .student-performance-table thead th{font-size:9px;letter-spacing:normal;text-transform:none}
+  .responsive-records :is(tbody,tr,td){display:block}
+  .responsive-records thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+  .responsive-records tbody tr{border:1px solid var(--line);border-radius:12px;margin-bottom:10px;padding:5px 11px}
+  .responsive-records td{padding:8px 0;overflow-wrap:anywhere}
+  .responsive-records td:last-child{border-bottom:0}
+  .record-label{display:block;color:var(--muted);font-size:11px;font-weight:700;margin-bottom:3px}
+  .question-dialog{padding:0;overflow:hidden}
+  .question-dialog form{display:grid;grid-template-rows:minmax(0,1fr) auto;max-height:calc(100dvh - 34px)}
+  .question-dialog-body{overflow:auto;padding:20px}
+  .question-dialog .profile-dialog-actions{margin:0;padding:10px 16px}
 }
